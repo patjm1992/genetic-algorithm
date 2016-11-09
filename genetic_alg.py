@@ -77,21 +77,26 @@ child = ""
 
 while evolving:
 
-    if generation_ct = 0:
+    if generation_ct == 0:
         generation = make_generation(target)
         #display_generation(generation)
-        parents = get_fit_parents(generation, target)
-        print(parents)
+        parents = get_fit_parents(generation, target, None)
+        print("Generation 0\n--------------------")
+        print("Parents: ", parents)
         child = breed(parents[0], parents[1], target)
         print(child, " Fitness", hamming_dist(child, target))
     else:
+        print("\nGeneration ", str(generation_ct), "\n--------------------")
         generation = make_generation(target)
         parent1 = child
         parent2 = find_fittest(generation, target)
+        print("Parents ", parent1, parent2)
         child = breed(parent1, parent2, target)
         print(child, " Fitness", hamming_dist(child, target))
 
-    if generation_ct = 2:
+    generation_ct += 1
+
+    if generation_ct == 2:
         evolving = False
 
 
