@@ -13,14 +13,16 @@ def hamming_dist(str1, str2):
 def generate_str(length):
         ran_string = ""
         for i in range(length):
-               ran_string += random.choice(string.printable)
+            ran_string += random.choice(string.printable)
+
+
 
         return ran_string           
 
 
 def make_generation(target):
     generation = []
-    for i in range(10):
+    for i in range(50):
         generation.append(generate_str(len(target)))
 
     return generation
@@ -67,13 +69,15 @@ def display_generation(generation):
         print(member, " | Fitness: ", hamming_dist(member, "carly"))
 
 
-target = "carly"
+
+target = "Blacksheep Trading Co."
 
 evolving = True
 
 generation_ct = 0
 
 child = ""
+score = None
 
 while evolving:
 
@@ -81,23 +85,29 @@ while evolving:
         generation = make_generation(target)
         #display_generation(generation)
         parents = get_fit_parents(generation, target, None)
-        print("Generation 0\n--------------------")
-        print("Parents: ", parents)
+
+  #      print("Generation 0\n--------------------")
+ #       print("Parents: ", parents)
         child = breed(parents[0], parents[1], target)
-        print(child, " Fitness", hamming_dist(child, target))
+#        print(child, " Fitness", hamming_dist(child, target))
+        print("Generation: ", str(generation_ct), "  | ", child)
     else:
-        print("\nGeneration ", str(generation_ct), "\n--------------------")
+      #  print("\nGeneration ", str(generation_ct), "\n--------------------")
         generation = make_generation(target)
         parent1 = child
         parent2 = find_fittest(generation, target)
-        print("Parents ", parent1, parent2)
+       # print("Parents ", parent1, parent2)
         child = breed(parent1, parent2, target)
-        print(child, " Fitness", hamming_dist(child, target))
+#        print(child, " Fitness", hamming_dist(child, target))
+        score = hamming_dist(child, target)
+        print("Generation: ", str(generation_ct), "  | ", child)
 
     generation_ct += 1
 
-    if generation_ct == 2:
+    if score == 0:
         evolving = False
+
+    
 
 
 
