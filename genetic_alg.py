@@ -16,10 +16,7 @@ def generate_str(length):
         for i in range(length):
             ran_string += random.choice(string.printable)
 
-
-
         return ran_string           
-
 
 def make_generation(target):
     generation = []
@@ -71,7 +68,7 @@ def display_generation(generation):
      
 
 
-target = "Carly Annette Marconi"
+target = "Carly Annette Marconi is nice."
 
 evolving = True
 
@@ -94,13 +91,16 @@ while evolving:
         parent2 = find_fittest(generation, target)
         child = breed(parent1, parent2, target)
         score = hamming_dist(child, target)
-        print(child)
+        if score == 0:
+            print("-->", child)
+            evolving = False
+        else:
+            print(child)
         sleep(0.1)
 
     generation_ct += 1
 
-    if score == 0:
-        evolving = False
+    
 
     
 print("\nEvolved the solution in", generation_ct, "generations.")
