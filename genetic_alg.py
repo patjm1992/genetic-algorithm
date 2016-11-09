@@ -62,11 +62,6 @@ def breed(str1, str2, target):
 
     return child
 
-def display_generation(generation):
-    for member in generation:
-        print(member, " | Fitness: ", hamming_dist(member, "carly"))
-     
-
 
 target = "Carly Annette Marconi is nice."
 
