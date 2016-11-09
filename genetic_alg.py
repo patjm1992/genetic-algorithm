@@ -37,7 +37,7 @@ def find_fittest(generation, target):
 
     return fittest            
 
-def get_fit_parents(generation, target):
+def get_fit_parents(generation, target, child):
     parents = []
     for i in range(2):
         fittest = find_fittest(generation, target)
@@ -71,17 +71,28 @@ target = "carly"
 
 evolving = True
 
+generation_ct = 0
+
+child = ""
+
 while evolving:
-    generation = make_generation(target)
 
-#    display_generation(generation)
+    if generation_ct = 0:
+        generation = make_generation(target)
+        #display_generation(generation)
+        parents = get_fit_parents(generation, target)
+        print(parents)
+        child = breed(parents[0], parents[1], target)
+        print(child, " Fitness", hamming_dist(child, target))
+    else:
+        generation = make_generation(target)
+        parent1 = child
+        parent2 = find_fittest(generation, target)
+        child = breed(parent1, parent2, target)
+        print(child, " Fitness", hamming_dist(child, target))
 
-    parents = get_fit_parents(generation, target)
-    print(parents)
-    child = breed(parents[0], parents[1], target)
-    print(child, " Fitness", hamming_dist(child, target))
-
-    evolving = False
+    if generation_ct = 2:
+        evolving = False
 
 
 
