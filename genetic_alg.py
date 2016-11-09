@@ -1,6 +1,7 @@
 
 import random
 import string
+from time import sleep
 
 def hamming_dist(str1, str2):
     sum = 0
@@ -67,10 +68,10 @@ def breed(str1, str2, target):
 def display_generation(generation):
     for member in generation:
         print(member, " | Fitness: ", hamming_dist(member, "carly"))
+     
 
 
-
-target = "Blacksheep Trading Co."
+target = "Carly Annette Marconi"
 
 evolving = True
 
@@ -83,24 +84,18 @@ while evolving:
 
     if generation_ct == 0:
         generation = make_generation(target)
-        #display_generation(generation)
         parents = get_fit_parents(generation, target, None)
-
-  #      print("Generation 0\n--------------------")
- #       print("Parents: ", parents)
         child = breed(parents[0], parents[1], target)
-#        print(child, " Fitness", hamming_dist(child, target))
-        print("Generation: ", str(generation_ct), "  | ", child)
+        print(child)
+        sleep(0.1)
     else:
-      #  print("\nGeneration ", str(generation_ct), "\n--------------------")
         generation = make_generation(target)
         parent1 = child
         parent2 = find_fittest(generation, target)
-       # print("Parents ", parent1, parent2)
         child = breed(parent1, parent2, target)
-#        print(child, " Fitness", hamming_dist(child, target))
         score = hamming_dist(child, target)
-        print("Generation: ", str(generation_ct), "  | ", child)
+        print(child)
+        sleep(0.1)
 
     generation_ct += 1
 
@@ -108,7 +103,7 @@ while evolving:
         evolving = False
 
     
-
+print("\nEvolved the solution in", generation_ct, "generations.")
 
 
 
