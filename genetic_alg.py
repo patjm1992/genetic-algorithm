@@ -63,7 +63,7 @@ def breed(str1, str2, target):
     return child
 
 
-target = "Carly Annette Marconi is nice."
+target = "Carly"
 
 evolving = True
 
@@ -87,7 +87,7 @@ while evolving:
         child = breed(parent1, parent2, target)
         score = hamming_dist(child, target)
         if score == 0:
-            print("-->", child)
+            print("->", child)
             evolving = False
         else:
             print(child)
