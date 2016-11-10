@@ -5,6 +5,10 @@ import sys
 import timeit
 from time import sleep
 
+
+
+
+
 def hamming_dist(str1, str2):
     sum = 0
     for c1, c2 in zip(str1, str2):
@@ -16,7 +20,10 @@ def hamming_dist(str1, str2):
 def generate_str(length):
         ran_string = ""
         for i in range(length):
-            ran_string += random.choice(string.printable)
+           # index = random.random() * len(chars)
+            #print("ran char " + chars[int(index)])
+#            ran_string += chars[int(index)]
+            ran_string += random.choice(chars)
 
         return ran_string           
 
@@ -59,11 +66,14 @@ def breed(str1, str2, target):
         if c1 == target_char or c2 == target_char:
             child += target_char
         else: 
-            child += random.choice(string.printable)
+#            index = random.random() * len(chars)
+            child += random.choice(chars)
 
     return child
 
-target = "ayy lmao lol"
+chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
+
+target = "Carly Annette Marconi."
 
 evolving = True
 
