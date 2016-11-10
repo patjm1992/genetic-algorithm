@@ -1,7 +1,10 @@
 Overview
 -----------------
 
-The fitness function used is calculating the [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
+This is a simple Python 3 program that "evolves" a given string (the *target*) by breeding populations of
+random strings and introducting random "mutations" until the correct string is "evolved."
+
+The fitness function chosen is the [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
 between two strings:
 
 ```python
