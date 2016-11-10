@@ -6,26 +6,24 @@ import timeit
 from time import sleep
 
 
-
-
-
 def hamming_dist(str1, str2):
+    '''
+        The hamming distance (https://en.wikipedia.org/wiki/Hamming_distance) is used as the fitness function. The lower the distance, the higher
+        the fitness.
+    '''
     sum = 0
     for c1, c2 in zip(str1, str2):
         if (c1 != c2):
             sum +=1
 
-    return sum            
+    return sum
 
 def generate_str(length):
         ran_string = ""
         for i in range(length):
-           # index = random.random() * len(chars)
-            #print("ran char " + chars[int(index)])
-#            ran_string += chars[int(index)]
             ran_string += random.choice(chars)
 
-        return ran_string           
+        return ran_string
 
 def make_generation(target):
     generation = []
@@ -44,7 +42,7 @@ def find_fittest(generation, target):
             fittest = member
             lowest_score = score
 
-    return fittest            
+    return fittest
 
 def get_fit_parents(generation, target, child):
     parents = []
@@ -53,11 +51,13 @@ def get_fit_parents(generation, target, child):
         index = generation.index(fittest)
         parent = generation.pop(i)
         parents.append(parent)
-        
-    
-    return parents        
+
+    return parents
 
 def breed(str1, str2, target):
+    '''
+        This is where the 'crossover' of genes happens.
+    '''
     child = ""
     i = 0
 
@@ -65,22 +65,19 @@ def breed(str1, str2, target):
 
         if c1 == target_char or c2 == target_char:
             child += target_char
-        else: 
-#            index = random.random() * len(chars)
+        else:
             child += random.choice(chars)
 
     return child
 
 chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
-
-target = "Carly Annette Marconi."
-
 evolving = True
-
 generation_ct = 0
-
 child = ""
 score = None
+
+print("Input string: ")
+target = input()
 
 start_time = timeit.default_timer()
 
@@ -104,8 +101,8 @@ while evolving:
 
     generation_ct += 1
 
-    
-elapsed = timeit.default_timer() - start_time    
+
+elapsed = timeit.default_timer() - start_time
 print("\nEvolved the phrase", "'" + target + "'", "in", generation_ct, "generations.")
 print("Finished in%10f seconds." % elapsed)
 
