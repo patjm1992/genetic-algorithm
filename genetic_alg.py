@@ -76,7 +76,7 @@ generation_ct = 0
 child = ""
 score = None
 
-print("Input string: ")
+print("Input string: ", end="")
 target = input()
 
 start_time = timeit.default_timer()
@@ -86,7 +86,7 @@ while evolving:
         generation = make_generation(target)
         parents = get_fit_parents(generation, target, None)
         child = breed(parents[0], parents[1], target)
-        print(child)
+        print("\n" + child)
     else:
         generation = make_generation(target)
         parent1 = child
