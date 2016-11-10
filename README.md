@@ -2,7 +2,8 @@ Overview
 -----------------
 
 This is a simple Python 3 program that "evolves" a given string (the *target*) by breeding populations of
-random strings and introducting random "mutations" until the correct string is "evolved."
+random strings and introducting random "mutations" until the correct string is "evolved." The fittest of a
+given generation are "bred" to find the correct answer.
 
 The fitness function chosen is the [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
 between two strings:
