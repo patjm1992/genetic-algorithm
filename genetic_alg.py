@@ -55,17 +55,15 @@ def breed(str1, str2, target):
     i = 0
 
     for c1, c2, target_char in zip(str1, str2, target):
-#        print("c1: ", c1, " | c2: ", c2, " | target: ", target_char)
+
         if c1 == target_char or c2 == target_char:
             child += target_char
         else: 
             child += random.choice(string.printable)
 
-
     return child
 
-
-target = "If anything there was a conscious attempt not to give overt direction -- although of course you end up becoming yourself."
+target = "ayy lmao lol"
 
 evolving = True
 
@@ -77,14 +75,11 @@ score = None
 start_time = timeit.default_timer()
 
 while evolving:
-
     if generation_ct == 0:
         generation = make_generation(target)
         parents = get_fit_parents(generation, target, None)
         child = breed(parents[0], parents[1], target)
         print(child)
-
- #       sleep(0.1)
     else:
         generation = make_generation(target)
         parent1 = child
@@ -96,21 +91,14 @@ while evolving:
             evolving = False
         else:
             print(child)
-#        sleep(0.1)
-
 
     generation_ct += 1
 
     
+elapsed = timeit.default_timer() - start_time    
+print("\nEvolved the phrase", "'" + target + "'", "in", generation_ct, "generations.")
+print("Finished in%10f seconds." % elapsed)
 
-    
-print("\nEvolved the solution in", generation_ct, "generations.")
-
-
-elapsed = timeit.default_timer() - start_time
-
-
-print("Evaluated in %.10f seconds." % elapsed)
 
 
 
