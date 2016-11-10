@@ -1,6 +1,8 @@
 
 import random
 import string
+import sys
+import timeit
 from time import sleep
 
 def hamming_dist(str1, str2):
@@ -63,7 +65,7 @@ def breed(str1, str2, target):
     return child
 
 
-target = "Carly"
+target = "If anything there was a conscious attempt not to give overt direction -- although of course you end up becoming yourself."
 
 evolving = True
 
@@ -72,6 +74,8 @@ generation_ct = 0
 child = ""
 score = None
 
+start_time = timeit.default_timer()
+
 while evolving:
 
     if generation_ct == 0:
@@ -79,7 +83,8 @@ while evolving:
         parents = get_fit_parents(generation, target, None)
         child = breed(parents[0], parents[1], target)
         print(child)
-        sleep(0.1)
+
+ #       sleep(0.1)
     else:
         generation = make_generation(target)
         parent1 = child
@@ -87,11 +92,12 @@ while evolving:
         child = breed(parent1, parent2, target)
         score = hamming_dist(child, target)
         if score == 0:
-            print("->", child)
+            print(child)
             evolving = False
         else:
             print(child)
-        sleep(0.1)
+#        sleep(0.1)
+
 
     generation_ct += 1
 
@@ -101,7 +107,10 @@ while evolving:
 print("\nEvolved the solution in", generation_ct, "generations.")
 
 
+elapsed = timeit.default_timer() - start_time
 
+
+print("Evaluated in %.10f seconds." % elapsed)
 
 
 
