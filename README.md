@@ -1,6 +1,20 @@
 Overview
 -----------------
 
+The fitness function used is calculating the [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
+between two strings:
+
+```python
+def hamming_dist(str1, str2):
+
+    sum = 0
+    for c1, c2 in zip(str1, str2):
+        if (c1 != c2):
+            sum +=1
+
+    return sum
+```
+
 Example Output:
 -----------------
 
@@ -31,6 +45,5 @@ David Foster Walrus
 
 Evolved the phrase 'David Foster Walrus' in 20 generations.
 Finished in  0.069556 seconds.
-
 
 ```
